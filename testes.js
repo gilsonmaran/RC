@@ -1,4 +1,3 @@
-
 function som_rolar_dados() {
     const dado = new Audio('roll_dice.wav');
     dado.play();
@@ -189,9 +188,9 @@ function ordenar_rolagem(dados_da_rolagem) {
 
 function nivel_de_sucesso(resultado_do_teste) {
     const SUCESSO_COMPLETO = 16;
-    const SUCESSO_PARCIAL = 11;
+    const SUCESSO_PARCIAL = 13;
     const SUCESSO_COM_CUSTO = 9;
-    const FALHA = 7;
+    const FALHA = 6;
 
     if (resultado_do_teste >= SUCESSO_COMPLETO)
         return 'Sucesso Completo';
