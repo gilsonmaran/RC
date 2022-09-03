@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <title>Personagens!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+
+            <div class="tabs is-toggle is-toggle-rounded is-centered">
+                <ul>
+                    <li class="is-active" data-target="tab-personagem">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-user"></i></span>
+                            <span>Personagem</span>
+                        </a>
+                    </li>
+                    <li class="" data-target="tab-personagem">
+                        <a href="index.html">
+                            <span class="icon is-small"><i class="fas fa-dice"></i></span>
+                            <span>Testes</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="columns is-centered mt-4">
+                <div class="field is-grouped">
+                    <div class="control">
+
+                        <button type="button" class="button is-link" onclick="gerar_personagem()">
+                            <span class="icon">
+                                <i class="fas fa-dice"></i>
+                            </span>
+                            <span>Gerar</span>
+                        </button>
+                    </div>
+                    <div class="control">
+                        <button type="button" class="button is-link is-light" onclick="limpar()">
+                            <span class="icon">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span>Limpar</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="box">
+                <div id="tabs-content">
+                    <div id="tab-personagem">
+
+                        <div class="field ">
+                            <div class="control m-2">
+                                <label class="label">Nome</label>
+                                <input id="nome" class="input is-rounded" type="text" placeholder="Nome do Personagem">
+                            </div>
+                        </div>
+
+
+                        <h1 class="title has-text-centered">Atributos (<span id="total-de-atributo">0</span>)</h1>
+
+                        <div class="columns is-centered">
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Ciência</label>
+                                    <input id="atributo-ciencia" class="input is-rounded" type="number" placeholder="Ciência" min="2">
+                                </div>
+                            </div>
+
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Destreza</label>
+                                    <input id="atributo-destreza" class="input is-rounded" type="number" placeholder="Destreza" min="2">
+                                </div>
+                            </div>
+
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Força</label>
+                                    <input id="atributo-forca" class="input is-rounded" type="number" placeholder="Força" min="2">
+                                </div>
+                            </div>
+
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Magia</label>
+                                    <input id="atributo-magia" class="input is-rounded" type="number" placeholder="Magia" min="2">
+                                </div>
+                            </div>
+
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Mente</label>
+                                    <input id="atributo-psicologico" class="input is-rounded" type="number" placeholder="Psicológico" min="2">
+                                </div>
+                            </div>
+
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Social</label>
+                                    <input id="atributo-social" class="input is-rounded" type="number" placeholder="Social" min="2">
+                                </div>
+                            </div>
+
+                            <div class="field ">
+                                <div class="control m-2">
+                                    <label class="label">Vigor</label>
+                                    <input id="atributo-vigor" class="input is-rounded" type="number" placeholder="Vigor" min="2">
+                                </div>
+                            </div>
+
+                            <hr>
+
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Traço de Personalidade: </span>
+                                    <span class="control" id="campo-traco-de-personalidade">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Ideais: </span>
+                                    <span class="control" id="campo-ideais">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Vínculo: </span>
+                                    <span class="control" id="campo-vinculo">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Defeito: </span>
+                                    <span class="control" id="campo-defeito">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Antecedente: </span>
+                                    <span class="control" id="campo-antecedente">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Arquétipo: </span>
+                                    <span class="control" id="campo-arquetipo">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Raça e Profissão: </span>
+                                    <span class="control" id="campo-raca">-</span>/<span class="control" id="campo-profissao">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Habilidades: </span>
+                                    <span class="control" id="campo-habilidades">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns mt-1">
+                            <div class="field">
+                                <div>
+                                    <span class="has-text-weight-bold">Perícias: </span>
+                                    <span class="control" id="campo-pericias">-</span><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <script src="personagem.js"></script>
+    <script>
+        function gerar_personagem() {
+            som_rolar_dados();
+
+            const atributos = {
+                'ciencia': gerar_atributo(),
+                'destreza': gerar_atributo(),
+                'forca': gerar_atributo(),
+                'magia': gerar_atributo(),
+                'psicologico': gerar_atributo(),
+                'social': gerar_atributo(),
+                'vigor': gerar_atributo(),
+            }
+
+            const nome_personagem = document.querySelector('#nome');
+            const total_de_atributos = atributos.ciencia + atributos.destreza + atributos.forca + atributos.magia + atributos.psicologico + atributos.social + atributos.vigor;
+            const atributo_ciencia = document.querySelector('#atributo-ciencia');
+            const atributo_destreza = document.querySelector('#atributo-destreza');
+            const atributo_forca = document.querySelector('#atributo-forca');
+            const atributo_magia = document.querySelector('#atributo-magia');
+            const atributo_psicologico = document.querySelector('#atributo-psicologico');
+            const atributo_social = document.querySelector('#atributo-social');
+            const atributo_vigor = document.querySelector('#atributo-vigor');
+            const atributo_total = document.querySelector('#total-de-atributo');
+
+            const campo_traco_de_personalidade = document.querySelector('#campo-traco-de-personalidade');
+            const campo_ideais = document.querySelector('#campo-ideais');
+            const campo_vinculo = document.querySelector('#campo-vinculo');
+            const campo_defeito = document.querySelector('#campo-defeito');
+            const campo_antecedente = document.querySelector('#campo-antecedente');
+            const campo_arquetipo = document.querySelector('#campo-arquetipo');
+            const campo_raca = document.querySelector('#campo-raca');
+            const campo_profissao = document.querySelector('#campo-profissao');
+            const campo_habilidades = document.querySelector('#campo-habilidades');
+            const campo_pericias = document.querySelector('#campo-pericias');
+
+            atributo_total.innerHTML = total_de_atributos;
+            atributo_ciencia.value = atributos.ciencia;
+            atributo_destreza.value = atributos.destreza;
+            atributo_forca.value = atributos.forca;
+            atributo_magia.value = atributos.magia;
+            atributo_psicologico.value = atributos.psicologico;
+            atributo_social.value = atributos.social;
+            atributo_vigor.value = atributos.vigor;
+
+            nome_personagem.value = gerar_nome();
+            campo_traco_de_personalidade.innerHTML = traco_de_personalidade();
+            campo_ideais.innerHTML = ideais();
+            campo_vinculo.innerHTML = vinculos();
+            campo_defeito.innerHTML = defeitos();
+            campo_antecedente.innerHTML = antecedentes();
+            campo_arquetipo.innerHTML = arquetipos();
+            campo_raca.innerHTML = racas();
+            campo_profissao.innerHTML = profissao();
+            campo_habilidades.innerHTML = habilidades();
+            campo_pericias.innerHTML = pericias();
+
+        }
+
+        function gerar_atributo() {
+            return d6() + d6();
+        }
+
+        function limpar() {
+            som_pegar_dados();
+            document.querySelector('#nome').value = '';
+            document.querySelector('#atributo-ciencia').value = '';
+            document.querySelector('#atributo-destreza').value = '';
+            document.querySelector('#atributo-forca').value = '';
+            document.querySelector('#atributo-magia').value = '';
+            document.querySelector('#atributo-psicologico').value = '';
+            document.querySelector('#atributo-social').value = '';
+            document.querySelector('#atributo-vigor').value = '';
+            document.querySelector('#total-de-atributo').value = '';
+
+            document.querySelector('#campo-traco-de-personalidade').innerHTML = '-';
+            document.querySelector('#campo-ideais').innerHTML = '-';
+            document.querySelector('#campo-vinculo').innerHTML = '-';
+            document.querySelector('#campo-defeito').innerHTML = '-';
+            document.querySelector('#campo-antecedente').innerHTML = '-';
+            document.querySelector('#campo-arquetipo').innerHTML = '-';
+            document.querySelector('#campo-raca').innerHTML = '-';
+            document.querySelector('#campo-profissao').innerHTML = '-';
+            document.querySelector('#campo-habilidades').innerHTML = '-';
+            document.querySelector('#campo-pericias').innerHTML = '-';
+        }
+
+        const tabs = document.querySelectorAll('.tabs li');
+        const tabContentBoxes = document.querySelectorAll('#tabs-content > div');
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(item => item.classList.remove('is-active'));
+                tab.classList.add('is-active');
+
+                const target = tab.dataset.target;
+                tabContentBoxes.forEach(box => {
+                    if (box.getAttribute('id') === target) {
+                        box.classList.remove('is-hidden');
+                    } else {
+                        box.classList.add('is-hidden');
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

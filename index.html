@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <title>Rolador de Dados!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+
+            <div class="tabs is-toggle is-toggle-rounded is-centered">
+                <ul>
+                    <li class="is-active" data-target="tab-pericia">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-tools"></i></span>
+                            <span>Teste de Perícias</span>
+                        </a>
+                    </li>
+                    <li data-target="tab-atributo">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-fist-raised"></i></span>
+                            <span>Teste de Atributos</span>
+                        </a>
+                    </li>
+                    <li data-target="tab-probabilidade">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-equals"></i></span>
+                            <span>Probabilidade de Sucesso</span>
+                        </a>
+                    </li>
+                    <li data-target="tab-d100">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-dice"></i></span>
+                            <span>D100</span>
+                        </a>
+                    </li>
+                    <li data-target="tab-dn">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-dice"></i></span>
+                            <span>DN</span>
+                        </a>
+                    </li>
+                    <li class="" data-target="tab-personagem">
+                        <a href="personagens.html">
+                            <span class="icon is-small"><i class="fas fa-user"></i></span>
+                            <span>Personagem</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <div id="tabs-content">
+
+                    <div id="tab-pericia">
+                        <h1 class="title has-text-centered">Teste de Perícia</h1>
+
+                        <div class="columns is-centered">
+                            <div class="field mr-4 ml-4">
+                                <label class="label">Dados</label>
+
+                                <div class="select is-rounded">
+                                    <select id="dados-teste-pericia">
+                                        <option value="1">1d6</option>
+                                        <option value="2">2d6</option>
+                                        <option value="3" selected>3d6</option>
+                                        <option value="4">4d6</option>
+                                        <option value="5">5d6</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="field mr-4 ml-4">
+                                <label class="label">Modificador</label>
+                                <div class="select is-rounded">
+                                    <select id="modificador-teste-pericia">
+                                        <option value="-3">-3</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-1">-1</option>
+                                        <option value="0" selected>+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns is-centered">
+                            <div class="field is-grouped">
+                                <div class="control">
+
+                                    <button type="button" id="button-teste-pericia" class="button is-link">
+                                        <span class="icon ">
+                                            <i class="fas fa-dice "></i>
+                                        </span>
+                                        <span>Rolar</span>
+                                    </button>
+                                </div>
+                                <div class="control ">
+                                    <button type="button " class="button is-link is-light" id="button-limpar-teste-pericia">
+                                        <span class="icon ">
+                                            <i class="fas fa-trash "></i>
+                                        </span>
+                                        <span>Limpar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="field has-text-centered ">
+                            <label class="label ">Resultado</label>
+                            <div>
+                                Você obteve <span class="control has-text-weight-bold " id="resultado-nivel-sucesso">-</span>. <br> Sua rolagem foi <span class="has-text-weight-bold " id="resultado-dados-da-rolagem"></span> com os seguintes dados:
+                                <br>
+                                <span class="has-text-weight-bold " id="resultado-rolagem-teste-pericia">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-atributo" class="is-hidden">
+                        <h1 class="title has-text-centered ">Teste de Atributo</h1>
+
+                        <div class="columns is-centered">
+                            <div class="field mr-4 ml-4">
+                                <label class="label ">Atributo</label>
+                                <div class="select is-rounded">
+                                    <select id="valor-teste-atributo">
+                                        <option value="3d6-3">2</option>
+                                        <option value="3d6-2">3</option>
+                                        <option value="3d6-2">4</option>
+                                        <option value="3d6-1" selected>5</option>
+                                        <option value="3d6-1">6</option>
+                                        <option value="3d6+0">7</option>
+                                        <option value="3d6+0">8</option>
+                                        <option value="3d6+1">9</option>
+                                        <option value="3d6+1">10</option>
+                                        <option value="3d6+2">11</option>
+                                        <option value="3d6+2">12</option>
+                                        <option value="3d6+3">13</option>
+                                        <option value="3d6+3">14</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="filed mr-4 ml-4 ">
+                                <label class="label">Modificador</label>
+                                <div class="select is-rounded ">
+                                    <select id="modificador-teste-atributo">
+                                        <option value="-3">-3</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-1">-1</option>
+                                        <option value="0" selected>+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                    </select> </div>
+                            </div>
+
+                        </div>
+
+                        <div class="columns is-centered ">
+                            <div class="field is-grouped ">
+                                <div class="control ">
+                                    <button type="button" id="button-teste-atributo" class="button is-link">
+                                        <span class="icon ">
+                                            <i class="fas fa-dice "></i>
+                                        </span>
+                                        <span>Rolar</span>
+                                    </button>
+                                </div>
+                                <div class="control ">
+                                    <button type="button" id="button-limpar-teste-atributo" class="button is-link is-light">
+                                        <span class="icon ">
+                                            <i class="fas fa-trash "></i>
+                                        </span>
+                                        <span>Limpar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="field has-text-centered ">
+                            <label class="label ">Resultado</label>
+                            <div>
+                                Você obteve um(a) <span class="control has-text-weight-bold " id="resultado-atributo">-</span>. <br> Sua rolagem foi <span class="has-text-weight-bold " id="resultado-rolagem-atributo"></span> com os seguids dados: <br>
+                                <span id="total-atributo" class="has-text-weight-bold">-</span>.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="tab-probabilidade" class="is-hidden">
+                        <h1 class="title has-text-centered ">Probabilidade de Sucesso</h1>
+
+                        <div class="columns is-centered">
+                            <div class="field mr-4 ml-4">
+                                <label class="label ">Dados</label>
+                                <div class="select is-rounded">
+                                    <select id="teste-dados">
+                                        <option value="1">1d6</option>
+                                        <option value="2">2d6</option>
+                                        <option value="3" selected>3d6</option>
+                                        <option value="4">4d6</option>
+                                        <option value="5">5d6</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="filed mr-4 ml-4">
+                                <label class="label">Modificador</label>
+                                <div class="select is-rounded">
+                                    <select id="teste-modificador">
+                                        <option value="-3">-3</option>
+                                        <option value="-2">-2</option>
+                                        <option value="-1">-1</option>
+                                        <option value="0" selected>+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="columns is-centered ">
+                            <div class="field is-grouped ">
+                                <div class="control">
+                                    <button type="button" id="button-teste-probabilidade" class="button is-link">
+                                        <span class="icon">
+                                            <i class="fas fa-dice"></i>
+                                        </span>
+                                        <span>Rolar</span>
+                                    </button>
+
+                                </div>
+                                <div class="control">
+                                    <button type="button" class="button is-link is-light" id="button-limpar-teste-probabilidade">
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span>Limpar</span>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="field has-text-centered ">
+                            <label class="label ">Resultado</label>
+                            <div>
+                                <p> Sucessos Completos: <span class="control has-text-weight-bold" id="teste-sucesso-completo">-</span>
+                                </p>
+                                <p>
+                                    Sucessos Parciais: <span class="control has-text-weight-bold" id="teste-sucesso-parcial">-</span>
+                                </p>
+                                <p>
+                                    Sucessos Com Custo: <span class="control has-text-weight-bold" id="teste-sucesso-com-custo">-</span>
+                                </p>
+                                <p>
+                                    Falhas: <span class="control has-text-weight-bold" id="teste-falha">-</span>
+                                </p>
+                                <p>
+                                    Falhas Com Complicação: <span class="control has-text-weight-bold" id="teste-falha-com-complicacao">-</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-d100" class="is-hidden">
+                        <h1 class="title has-text-centered ">Rolar d100</h1>
+
+                        <div class="columns is-centered ">
+                            <div class="field is-grouped ">
+                                <div class="control">
+                                    <button type="button" id="button-teste-d100" class="button is-link">
+                                        <span class="icon">
+                                            <i class="fas fa-dice"></i>
+                                        </span>
+                                        <span>Rolar</span>
+                                    </button>
+                                </div>
+                                <div class="control">
+                                    <button type="button" id="button-limpar-teste-d100" class="button is-link is-light">
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span>Limpar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="field has-text-centered ">
+                            <label class="label ">Resultado</label>
+                            <div>
+                                Resltado: <span class="control has-text-weight-bold " id="resultado-d100">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-dn" class="is-hidden">
+                        <h1 class="title has-text-centered ">Rolar dN</h1>
+
+                        <div class="columns is-centered">
+                            <div class="control is-one-third">
+                                <input class="input is-rounded" id="teste-dn" type="number" min="2" value="100">
+                            </div>
+                        </div>
+
+                        <div class="columns is-centered mt-4">
+                            <div class="field is-grouped is-centered">
+                                <div class="control">
+                                    <button type="button" id="button-teste-dn" class="button is-link">
+                                        <span class="icon">
+                                            <i class="fas fa-dice"></i>
+                                        </span>
+                                        <span>Rolar</span>
+                                    </button>
+                                </div>
+
+                                <div class="control">
+                                    <button type="button" id="button-limpar-teste-dn" class="button is-link is-light">
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span>Limpar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns is-centered mt-4">
+                            <div class="control">
+                                <button type="button" id="button-teste-d66" class="button is-link">
+                                    <span class="icon">
+                                        <i class="fas fa-dice"></i>
+                                    </span>
+                                    <span>Rolar d66</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="field has-text-centered ">
+                            <label class="label ">Resultado</label>
+                            <div>
+                                Resultado: <span class="control has-text-weight-bold " id="resultado-dn">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="testes.js "></script>
+    <script>
+        const tabs = document.querySelectorAll('.tabs li');
+        const tabContentBoxes = document.querySelectorAll('#tabs-content > div');
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(item => item.classList.remove('is-active'));
+                tab.classList.add('is-active');
+
+                const target = tab.dataset.target;
+                tabContentBoxes.forEach(box => {
+                    if (box.getAttribute('id') === target) {
+                        box.classList.remove('is-hidden');
+                    } else {
+                        box.classList.add('is-hidden');
+                    }
+                })
+            })
+        })
+
+        const button_pericia = document.querySelector('#button-teste-pericia');
+        const button_limpar_teste_pericia = document.querySelector('#button-limpar-teste-pericia');
+
+        const button_atributo = document.querySelector('#button-teste-atributo');
+        const button_limpar_atributo = document.querySelector('#button-limpar-teste-atributo');
+
+        const button_probabilidade = document.querySelector('#button-teste-probabilidade');
+        const button_limpar_teste_probabilidade = document.querySelector('#button-limpar-teste-probabilidade');
+
+        const button_teste_d100 = document.querySelector('#button-teste-d100');
+        const button_limpar_teste_d100 = document.querySelector('#button-limpar-teste-d100');
+
+        const button_teste_dn = document.querySelector('#button-teste-dn');
+        const button_teste_d66 = document.querySelector('#button-teste-d66');
+        const button_limpar_teste_dn = document.querySelector('#button-limpar-teste-dn');
+
+        button_pericia.addEventListener('click', () => {
+            som_rolar_dados();
+            teste_de_pericia();
+        });
+
+        button_limpar_teste_pericia.addEventListener('click', () => {
+            som_pegar_dados();
+            limpar_teste_de_pericia();
+        });
+
+        button_atributo.addEventListener('click', () => {
+            som_rolar_dados();
+            teste_de_atributo();
+        });
+
+        button_limpar_atributo.addEventListener('click', () => {
+            som_pegar_dados();
+            limpar_teste_de_atributo();
+        });
+
+        button_probabilidade.addEventListener('click', () => {
+            som_rolar_dados();
+            teste_de_probabilidade();
+        });
+
+        button_limpar_teste_probabilidade.addEventListener('click', () => {
+            som_pegar_dados();
+            limpar_teste_de_probabilidade();
+        });
+
+        button_teste_d100.addEventListener('click', () => {
+            som_rolar_dados();
+            document.querySelector('#resultado-d100').innerHTML = d100();
+        });
+
+        button_limpar_teste_d100.addEventListener('click', () => {
+            som_pegar_dados();
+            document.querySelector('#resultado-d100').innerHTML = '-';
+        });
+
+        button_teste_dn.addEventListener('click', () => {
+            som_rolar_dados();
+            const numero_de_lados = document.querySelector('#teste-dn').value;
+            document.querySelector('#resultado-dn').innerHTML = dn(numero_de_lados);
+        });
+
+        button_teste_d66.addEventListener('click', () => {
+            som_rolar_dados();
+            document.querySelector('#resultado-dn').innerHTML = d66();
+        });
+
+        button_limpar_teste_dn.addEventListener('click', () => {
+            som_pegar_dados();
+            document.querySelector('#resultado-dn').innerHTML = '-';
+        });
+    </script>
+</body>
+
+</html>
