@@ -173,33 +173,6 @@
                         <div class="columns mt-1">
                             <div class="field">
                                 <div>
-                                    <span class="has-text-weight-bold">Arquétipo: </span>
-                                    <span class="control" id="campo-arquetipo">-</span><br>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="columns mt-1">
-                            <div class="field">
-                                <div>
-                                    <span class="has-text-weight-bold">Raça e Profissão: </span>
-                                    <span class="control" id="campo-raca">-</span>/<span class="control" id="campo-profissao">-</span><br>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="columns mt-1">
-                            <div class="field">
-                                <div>
-                                    <span class="has-text-weight-bold">Habilidades: </span>
-                                    <span class="control" id="campo-habilidades">-</span><br>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="columns mt-1">
-                            <div class="field">
-                                <div>
                                     <span class="has-text-weight-bold">Perícias: </span>
                                     <span class="control" id="campo-pericias">-</span><br>
                                 </div>
@@ -244,9 +217,6 @@
             const campo_vinculo = document.querySelector('#campo-vinculo');
             const campo_defeito = document.querySelector('#campo-defeito');
             const campo_antecedente = document.querySelector('#campo-antecedente');
-            const campo_arquetipo = document.querySelector('#campo-arquetipo');
-            const campo_raca = document.querySelector('#campo-raca');
-            const campo_profissao = document.querySelector('#campo-profissao');
             const campo_habilidades = document.querySelector('#campo-habilidades');
             const campo_pericias = document.querySelector('#campo-pericias');
 
@@ -265,16 +235,12 @@
             campo_vinculo.innerHTML = vinculos();
             campo_defeito.innerHTML = defeitos();
             campo_antecedente.innerHTML = antecedentes();
-            campo_arquetipo.innerHTML = arquetipos();
-            campo_raca.innerHTML = racas();
-            campo_profissao.innerHTML = profissao();
-            campo_habilidades.innerHTML = habilidades();
             campo_pericias.innerHTML = pericias();
 
         }
 
         function gerar_atributo() {
-            return d6() + d6();
+            return parseInt(Math.random() * 6 + 1);
         }
 
         function limpar() {
@@ -294,10 +260,6 @@
             document.querySelector('#campo-vinculo').innerHTML = '-';
             document.querySelector('#campo-defeito').innerHTML = '-';
             document.querySelector('#campo-antecedente').innerHTML = '-';
-            document.querySelector('#campo-arquetipo').innerHTML = '-';
-            document.querySelector('#campo-raca').innerHTML = '-';
-            document.querySelector('#campo-profissao').innerHTML = '-';
-            document.querySelector('#campo-habilidades').innerHTML = '-';
             document.querySelector('#campo-pericias').innerHTML = '-';
         }
 

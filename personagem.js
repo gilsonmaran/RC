@@ -9,7 +9,7 @@ function som_pegar_dados() {
 }
 
 function gerar_atributo() {
-    return d6() + d6();
+    return parseInt(Math.random() * 7 + 1);
 }
 
 function d6() {
@@ -376,158 +376,6 @@ function antecedentes() {
     return antecedentes[Math.floor((Math.random() * antecedentes.length))];
 }
 
-function arquetipos() {
-    const arquetipos = [
-        'Bruto',
-        'Cético',
-        'Filósofo',
-        'Generoso',
-        'Hedonista',
-        'Idealista',
-        'Imaturo',
-        'Independente',
-        'Jogador',
-        'Líder',
-        'Malandro',
-        'Misterioso',
-        'Místico',
-        'Político',
-        'Revoltado',
-        'Romântico',
-        'Princesa',
-        'Puro',
-        'Racional',
-        'Sedutor',
-        'Seguidor',
-        'Selvagem',
-        'Sofredor',
-        'Teatral',
-        'Vingativo',
-    ];
-
-    return arquetipos[Math.floor((Math.random() * arquetipos.length))];
-}
-
-function racas() {
-    const racas = [
-        'Android',
-        'Anão',
-        'Elfo',
-        'Faunos',
-        'Kobold',
-        'Drow',
-        'Gem',
-        'Humanos',
-        'Halfling',
-        'Orc',
-        'Selvagens',
-    ];
-
-    return racas[Math.floor((Math.random() * racas.length))];
-}
-
-function profissao() {
-    const profissoes = [
-        'Aventureiro',
-        'Bardo',
-        'Guerreiro',
-        'Ladino',
-        'Sábio',
-        'Mecânico',
-        'Druida',
-        'Trapaceiro',
-        'Patrulheiro',
-    ];
-
-    return profissoes[Math.floor((Math.random() * profissoes.length))];
-}
-
-function habilidades() {
-    const passivas = [
-        'Acerto Automático (P)',
-        'Adaga Sorrateira (P)',
-        'Alvo Marcado (P)',
-        'Ambidestria (P)',
-        'Aprender Ponto Fraco (P)',
-        'Armas Improvisadas (P)',
-        'Arremesso de Segurança (P)',
-        'Combate em Equipe (P)',
-        'Coragem de Batalha (P)',
-        'Couraça (P)',
-        'Duro de Ferir (P)',
-        'Equilíbrio Perfeito (P)',
-        'Inimigo Favorito (P)',
-        'Intimidação em Combate (P)',
-        'Liderança em Combate (P)',
-        'Lutar às Cegas (P)',
-        'Lutar Caído (P)',
-        'Mãos Leves (P)',
-        'Mira Perfeita (P)',
-        'Momento Crítico (P)',
-        'Perito em Arremesso(P)',
-        'Recarregamento Rápido(P)',
-        'Ser Sombra(P)',
-        'Sintonia(P)',
-        'Tática de Combate(P)',
-    ];
-
-    const ativas = [
-        'Afastar (A)',
-        'Alvo Trocado (A)',
-        'Ataque Duplo (A)',
-        'Ataque Surpreso (A)',
-        'Ataque Total (A)',
-        'Ato de Desespero (A)',
-        'Bloqueio Extra (A)',
-        'Combate Defensivo (A)',
-        'Combate Tático (A)',
-        'Contra Ataque (A)',
-        'Desarmar (A)',
-        'Dilacerar (A)',
-        'Fuga (A)',
-        'Fúria corporal (A)',
-        'Golpe Cruel (A)',
-        'Golpe Duro (A)',
-        'Golpe Giratório (A)',
-        'Golpe Improvisado (A)',
-        'Golpes Rápidos (A)',
-        'Grito de Guerra (A)',
-        'Guarda Costas (A)',
-        'Iniciativa em Combate (A)',
-        'Insistência (A)',
-        'Mestre em Arremesso (A)',
-        'Movimentos Rápidos (A)',
-        'Otimista (A)',
-        'Posição de Combate(A)',
-        'Prodígio com[Arma](A)',
-        'Quebrar Defesa(A)',
-        'Raspão(A)',
-        'Reação de Defesa(A)',
-        'Saque Rápido(A)',
-        'Soco Potente(A)',
-        'Socorro em Combate(A)',
-        'Sucesso Extra(A)',
-    ];
-
-    let tem_passsiva = d6();
-    tem_passsiva = tem_passsiva <= 3;
-
-    let habilidade_1;
-    let habilidade_2;
-    let habilidade_3;
-
-    habilidade_1 = ativas[Math.floor((Math.random() * ativas.length))];
-    habilidade_2 = ativas[Math.floor((Math.random() * ativas.length))];
-
-    if (tem_passsiva) {
-        habilidade_3 = passivas[Math.floor((Math.random() * passivas.length))];
-    } else {
-        habilidade_3 = ativas[Math.floor((Math.random() * ativas.length))];
-    }
-
-    return habilidade_1 + ', ' + habilidade_2 + ', ' + habilidade_3 + '.';
-}
-
 function pericias() {
     let lista_de_pericias = [];
 
@@ -642,10 +490,6 @@ function gerar_nome() {
     let c = d100();
     let m = d100();
     let f = d100();
-
-    console.log(c);
-    console.log(m);
-    console.log(f);
 
     return comeco[c] + meio[m] + fim[f];
 }
