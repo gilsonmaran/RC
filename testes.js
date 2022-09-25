@@ -21,7 +21,6 @@ function teste_de_pericia() {
 
     resultado = dado_atributo + dado_pericia + parseInt(modificador);
 
-
     document.querySelector('#resultado-nivel-sucesso').innerHTML = nivel_de_sucesso(resultado);
     document.querySelector('#resultado-dados-da-rolagem').innerHTML = resultado;
     document.querySelector('#resultado-rolagem-teste-pericia').innerHTML = `${dado_atributo} e ${dado_pericia}`;

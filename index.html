@@ -32,6 +32,13 @@
                         </a>
                     </li>
 
+                    <li data-target="tab-aprimorar-atributo">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-dice"></i></span>
+                            <span>Aprimorar Atributo</span>
+                        </a>
+                    </li>
+
                     <li class="" data-target="tab-personagem">
                         <a href="personagens.html">
                             <span class="icon is-small"><i class="fas fa-user"></i></span>
@@ -132,6 +139,52 @@
                         </div>
                     </div>
 
+                    <div id="tab-aprimorar-atributo">
+                        <h1 class="title has-text-centered">Teste de Perícia</h1>
+
+                        <div class="columns is-centered">
+                            <div class="field mr-4 ml-4">
+                                <label class="label">Valor do Atributo</label>
+
+                                <div class="is-rounded mb-4">
+                                    <input class="input" type="number" id="input-aprimorar-atributo" value="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="columns is-centered">
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button type="button" id="button-aprimorar-atributo" class="button is-link">
+                                        <span class="icon">
+                                            <i class="fas fa-dice"></i>
+                                        </span>
+                                        <span>Rolar</span>
+                                    </button>
+                                </div>
+                                <div class="control">
+                                    <button type="button" class="button is-link is-light" id="limpar-aprimorar-atributo">
+                                        <span class="icon">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span>Limpar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="field has-text-centered ">
+                            <label class="label ">Resultado</label>
+                            <div>
+                                Você obteve <span class="control has-text-weight-bold " id="resultado-aprimorar-atributo">-</span>
+                                <br>
+                                <span class="has-text-weight-bold " id="rolagem-aprimorar-atributo">-</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="tab-dn" class="is-hidden">
                         <h1 class="title has-text-centered ">Rolar dN</h1>
 
@@ -220,6 +273,11 @@
         const button_teste_d66 = document.querySelector('#button-teste-d66');
         const button_limpar_teste_dn = document.querySelector('#button-limpar-teste-dn');
 
+        const input_aprimorar_atributo = document.querySelector('#input-aprimorar-atributo');
+        const button_aprimorar_atributo = document.querySelector('#button-aprimorar-atributo');
+        const limpar_aprimorar_atributo = document.querySelector('#limpar-aprimorar-atributo');
+
+
         button_pericia.addEventListener('click', () => {
             som_rolar_dados();
             teste_de_pericia();
@@ -244,6 +302,19 @@
         button_limpar_teste_dn.addEventListener('click', () => {
             som_pegar_dados();
             document.querySelector('#resultado-dn').innerHTML = '-';
+        });
+
+        button_aprimorar_atributo.addEventListener('click', () => {
+            som_rolar_dados();
+            const valor = dn(8);
+            document.getElementById('resultado-aprimorar-atributo').innerText = valor <= input_aprimorar_atributo.value ? 'Sucesso' : 'Falha';
+            document.getElementById('rolagem-aprimorar-atributo').innerText = valor;
+        });
+
+        limpar_aprimorar_atributo.addEventListener('click', () => {
+            som_pegar_dados();
+            document.getElementById('resultado-aprimorar-atributo').innerText = '-'
+            document.getElementById('rolagem-aprimorar-atributo').innerText = '-';
         });
     </script>
 </body>
